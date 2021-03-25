@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { PedidoService } from 'src/app/services/pedido.service';
-import { Pedido } from 'src/app/model/pedido';
 
 @Component({
   selector: 'app-content',
-  templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css']
+  templateUrl: './listar-pedidos.component.html',
+  styleUrls: ['./listar-pedidos.component.css']
 })
-export class ContentComponent implements OnInit {
-
-  //public listaPedidos: Array<Pedido> = new Array<Pedido>();
+export class ListarPedidos implements OnInit {
 
   pedidos: any;
 
@@ -28,11 +25,5 @@ export class ContentComponent implements OnInit {
       }
     )
   }
-
-  // ngOnInit(): void {
-  //   this.pedidoService.buscarPedidos().subscribe((pedidos: Array<Pedido>) => {
-  //     this.listaPedidos = pedidos;
-  //   })
-  // }
 
 }
