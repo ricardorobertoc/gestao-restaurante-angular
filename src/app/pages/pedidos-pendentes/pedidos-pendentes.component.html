@@ -27,7 +27,7 @@
                                 <td>{{ pedido.id }}</td>
                                 <td class="d-none d-xl-table-cell">{{ pedido.nomeItem | titlecase }}</td>
                                 <td class="d-none d-xl-table-cell">{{ pedido.numeroMesa }}</td>
-                                <td class="d-none d-md-table-cell">{{ pedido.valor }}</td>
+                                <td class="d-none d-md-table-cell">{{ pedido.valor | currency: 'R$ ' }}</td>
                                 <td>
                                     <span class="badge bg-primary" *ngIf="pedido.situacao === 'NOVO'">{{ pedido.situacao }}</span>
                                     <span class="badge bg-warning" *ngIf="pedido.situacao === 'FECHADO'">{{ pedido.situacao }}</span>

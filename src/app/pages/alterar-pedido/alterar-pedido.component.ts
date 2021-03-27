@@ -13,6 +13,7 @@ import { Pedido } from 'src/app/model/Pedido';
 export class AlterarPedidoComponent implements OnInit {
   
   idPedido: any;
+  numMesa: any;
 
   formulario = new FormGroup({
     nomeItem: new FormControl(''),
@@ -23,7 +24,7 @@ export class AlterarPedidoComponent implements OnInit {
   get nomeItem(): any { return this.formulario.get('nomeItem') }
   get valor(): any { return this.formulario.get('valor') }
   get numeroMesa(): any { return this.formulario.get('numeroMesa') }
-
+  get situacao(): any { return this.formulario.get('situacao') }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,7 +34,7 @@ export class AlterarPedidoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    
     this.idPedido = this.activatedRoute.snapshot.paramMap.get('id');
 
     this.pedidoService.buscarPedidoId(this.idPedido).subscribe((pedido: any) => {
@@ -41,8 +42,10 @@ export class AlterarPedidoComponent implements OnInit {
         id: [pedido.id, Validators.required],
         nomeItem: [pedido.nomeItem, Validators.required],
         valor: [pedido.valor, Validators.required],
-        numeroMesa: [pedido.numeroMesa, Validators.required]
-      })
+        numeroMesa: [pedido.numeroMesa, Validators.required],
+        situacao: [pedido.situacao, Validators.required]
+      },
+      this.numMesa = pedido.numeroMesa)
     })
     
     this.configurarFormulario();
@@ -66,6 +69,7 @@ export class AlterarPedidoComponent implements OnInit {
       pedido.nomeItem = this.nomeItem.value;
       pedido.valor = this.valor.value;
       pedido.numeroMesa = this.numeroMesa.value;
+      pedido.situacao = this.situacao.value;
 
       this.pedidoService.atualizarPedido(pedido.id, pedido).subscribe((retorno: any) => {
         SweetAlert.exibirSucesso('Pedido ' + retorno.nomeItem + ' atualizado com sucesso!');
@@ -75,7 +79,6 @@ export class AlterarPedidoComponent implements OnInit {
     } else {
       SweetAlert.exibirErro('Formulário Inválido')
     }
-    
   }
 
 }

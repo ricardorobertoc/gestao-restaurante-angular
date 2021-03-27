@@ -28,28 +28,29 @@
                                             <input type="text" class="form-control" formControlName="valor" placeholder="Valor">
                                         </div>
                                     </div>
+                                  
                                     <fieldset class="mb-3">
                                         <div class="row">
                                             <label class="col-form-label col-sm-2 text-sm-right pt-sm-0">Mesa</label>
                                             <div class="col-sm-10">
                                                 <label class="form-check">
-                                                    <input type="radio" class="form-check-input" value="1" formControlName="numeroMesa">
+                                                    <input [(ngModel)]="numMesa" [value]="1" type="radio" class="form-check-input" value="1" formControlName="numeroMesa">
                                                     <span class="form-check-label">Mesa 1</span>
                                                 </label>
                                                 <label class="form-check">
-                                                    <input type="radio" class="form-check-input" value="2" formControlName="numeroMesa">
+                                                    <input [(ngModel)]="numMesa" [value]="2" type="radio" class="form-check-input" value="2" formControlName="numeroMesa">
                                                     <span class="form-check-label">Mesa 2</span>
                                                 </label>
                                                 <label class="form-check">
-                                                    <input type="radio" class="form-check-input" value="3" formControlName="numeroMesa">
+                                                    <input [(ngModel)]="numMesa" [value]="3" type="radio" class="form-check-input" value="3" formControlName="numeroMesa">
                                                     <span class="form-check-label">Mesa 3</span>
                                                 </label>
                                                 <label class="form-check">
-                                                    <input type="radio" class="form-check-input" value="4" formControlName="numeroMesa">
+                                                    <input [(ngModel)]="numMesa" [value]="4" type="radio" class="form-check-input" value="4" formControlName="numeroMesa">
                                                     <span class="form-check-label">Mesa 4</span>
                                                 </label>
                                                 <label class="form-check">
-                                                    <input type="radio" class="form-check-input" value="5" formControlName="numeroMesa">
+                                                    <input [(ngModel)]="numMesa" [value]="5" type="radio" class="form-check-input" value="5" formControlName="numeroMesa">
                                                     <span class="form-check-label">Mesa 5</span>
                                                 </label>
                                             </div>
