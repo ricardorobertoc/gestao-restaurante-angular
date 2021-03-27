@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpErrorInterceptor } from './confgs/http-error-interceptor';
+import { AlterarPedidoComponent } from './pages/alterar-pedido/alterar-pedido.component';
+import { DetalharPedidoComponent } from './pages/detalhar-pedido/detalhar-pedido.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { HttpErrorInterceptor } from './confgs/http-error-interceptor';
     ListarPedidos,
     IncluirPedidoComponent,
     PedidosPendentesComponent,
-    FecharContaComponent
+    FecharContaComponent,
+    AlterarPedidoComponent,
+    DetalharPedidoComponent
   ],
   imports: [
     BrowserModule,

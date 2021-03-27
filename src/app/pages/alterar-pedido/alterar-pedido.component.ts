@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { SweetAlert } from 'src/app/confgs/sweet-alert.ts.service';
 import { Pedido } from 'src/app/model/Pedido';
 
 @Component({
-  selector: 'app-incluir-pedido',
-  templateUrl: './incluir-pedido.component.html',
-  styleUrls: ['./incluir-pedido.component.css']
+  selector: 'app-alterar-pedido',
+  templateUrl: './alterar-pedido.component.html',
+  styleUrls: ['./alterar-pedido.component.css']
 })
-export class IncluirPedidoComponent implements OnInit {
+export class AlterarPedidoComponent implements OnInit {
+  
+  idPedido: any;
 
   formulario = new FormGroup({
     nomeItem: new FormControl(''),
@@ -24,10 +27,24 @@ export class IncluirPedidoComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private pedidoService: PedidoService
+    private pedidoService: PedidoService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+
+    this.idPedido = this.activatedRoute.snapshot.paramMap.get('id');
+
+    this.pedidoService.buscarPedidoId(this.idPedido).subscribe((pedido: any) => {
+      this.formulario = this.formBuilder.group({
+        id: [pedido.id, Validators.required],
+        nomeItem: [pedido.nomeItem, Validators.required],
+        valor: [pedido.valor, Validators.required],
+        numeroMesa: [pedido.numeroMesa, Validators.required]
+      })
+    })
+    
     this.configurarFormulario();
   }
 
@@ -39,18 +56,20 @@ export class IncluirPedidoComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  onSubmit(id: any) {
 
     if (this.formulario.valid) {
 
       const pedido: Pedido = new Pedido();
 
+      pedido.id = id;
       pedido.nomeItem = this.nomeItem.value;
       pedido.valor = this.valor.value;
       pedido.numeroMesa = this.numeroMesa.value;
 
-      this.pedidoService.incluir(pedido).subscribe((retorno: any) => {
-        SweetAlert.exibirSucesso('Pedido ' + retorno.nomeItem + ' incluído com sucesso!')
+      this.pedidoService.atualizarPedido(pedido.id, pedido).subscribe((retorno: any) => {
+        SweetAlert.exibirSucesso('Pedido ' + retorno.nomeItem + ' atualizado com sucesso!');
+        this.router.navigate([`/pendentes`]);
       })
 
     } else {

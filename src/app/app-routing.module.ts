@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListarPedidos } from './pages/listar-pedidos/listar-pedidos.component'
 import { IncluirPedidoComponent } from './pages/incluir-pedido/incluir-pedido.component'
 import { PedidosPendentesComponent } from './pages/pedidos-pendentes/pedidos-pendentes.component';
+import { AlterarPedidoComponent } from './pages/alterar-pedido/alterar-pedido.component';
+import { DetalharPedidoComponent } from './pages/detalhar-pedido/detalhar-pedido.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,14 @@ const routes: Routes = [
   {
     path: 'pendentes',
     component: PedidosPendentesComponent,
+  },
+  {
+    path: 'alterar/:id',
+    component: AlterarPedidoComponent,
+  },
+  {
+    path: 'detalhar',
+    component: DetalharPedidoComponent,
   }
 ];
 

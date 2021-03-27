@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { SweetAlert } from 'src/app/confgs/sweet-alert.ts.service'
 import { Pedido } from 'src/app/model/Pedido';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pedidos-pendentes',
@@ -14,7 +15,8 @@ export class PedidosPendentesComponent implements OnInit {
   public listaPedidos: Array<Pedido> = new Array<Pedido>();
 
   constructor(
-    private pedidoService: PedidoService
+    private pedidoService: PedidoService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -29,8 +31,26 @@ export class PedidosPendentesComponent implements OnInit {
     )
   }
 
-  cancelar(id: any) {
-   
+  cancelar(pedido: Pedido) {
+    pedido.situacao = "CANCELADO";
+    this.atualizar(pedido);
+  }
+
+  finalizar(pedido: Pedido) {
+    pedido.situacao = "CONCLUIDO";
+    this.atualizar(pedido);
+  }
+
+  atualizar(pedido: Pedido) {
+    this.pedidoService.atualizarPedido(pedido.id, pedido).subscribe((retorno: any) => {
+      SweetAlert.exibirSucesso('Pedido ' + retorno.nomeItem + ' alterado com sucesso!').then(() => {
+        this.ngOnInit();
+      })
+    })
+  }
+
+  alterarPedido(id: any) {
+    this.router.navigate([`/alterar/${id}`])
   }
 
 }

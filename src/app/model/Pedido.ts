@@ -4,5 +4,6 @@ export class Pedido {
     public nomeItem: string = "";
     public numeroMesa: number = 0;
     public valor: number = 0;
+    public situacao: string ="";
   
   }

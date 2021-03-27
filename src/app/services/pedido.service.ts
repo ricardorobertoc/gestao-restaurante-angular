@@ -14,6 +14,10 @@ export class PedidoService {
     return this.httpClient.get(`${environment.urlBackEnd}`);
   }
 
+  buscarPedidoId(id: any) {
+    return this.httpClient.get(`${environment.urlBackEnd}/${id}`);
+  }
+
   buscarPedidosPendentes() {
     return this.httpClient.get(`${environment.urlBackEnd}/pendentes`);
   }
@@ -22,5 +26,8 @@ export class PedidoService {
     return this.httpClient.post(environment.urlBackEnd, pedido);
   }
 
+  atualizarPedido(id: any, pedido: Pedido) {
+    return this.httpClient.put(`${environment.urlBackEnd}/${id}`, pedido)
+  }
 
 }
