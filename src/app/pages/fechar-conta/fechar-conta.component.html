@@ -1,1 +1,58 @@
-<p>fechar-conta works!</p>
+<div class="col-12 col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Fechar Conta</h5>
+            <h6 class="card-subtitle text-muted">Escolha a mesa para fechar a conta</h6>
+        </div>
+        <div class="card-body text-center">
+            <div class="mb-3">
+                <button class="btn btn-outline-primary" (click)="buscarConcluidosMesa(1)">Mesa 1</button>
+                <button class="btn btn-outline-secondary" (click)="buscarConcluidosMesa(2)">Mesa 2</button>
+                <button class="btn btn-outline-success" (click)="buscarConcluidosMesa(3)">Mesa 3</button>
+                <button class="btn btn-outline-danger" (click)="buscarConcluidosMesa(4)">Mesa 4</button>
+                <button class="btn btn-outline-warning" (click)="buscarConcluidosMesa(5)">Mesa 5</button>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body m-sm-3 m-md-5">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-muted">Numero da mesa</div>
+                    <strong>Mesa 01</strong>
+                </div>
+            </div>
+
+            <hr class="my-4" />
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Nome Item</th>
+                        <th>Situação</th>
+                        <th class="text-right">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pedido of pedidos">
+                        <td>{{ pedido.nomeItem | titlecase }}</td>
+                        <td>{{ pedido.situacao }}</td>
+                        <td class="text-right">{{ pedido.valor | currency: 'R$ ' }}</td>
+                    </tr>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Total </th>
+                        <th class="text-right">$268.85</th>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="text-center">
+                <a href="#" class="btn btn-primary">
+                    Fechar Conta
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

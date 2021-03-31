@@ -18,4 +18,12 @@ export class SweetAlert {
     );
   }
 
+  static exibirAtencao(mensagem: string) {
+    return Swal.fire(
+      'Atenção!',
+      mensagem,
+      'warning'
+    );
+  }
+
 }

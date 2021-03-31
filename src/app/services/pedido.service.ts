@@ -30,4 +30,8 @@ export class PedidoService {
     return this.httpClient.put(`${environment.urlBackEnd}/${id}`, pedido)
   }
 
+  buscarPedidosConcluidosMesa(numeroMesa: any) {
+    return this.httpClient.get(`${environment.urlBackEnd}/concluidos/${numeroMesa}`);
+  }
+
 }
