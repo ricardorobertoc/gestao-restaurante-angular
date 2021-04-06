@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="text-muted">Numero da mesa</div>
-                    <strong>Mesa 01</strong>
+                    <strong>Mesa {{ numeroMesa }}</strong>
                 </div>
             </div>
 
@@ -43,13 +43,13 @@
                     <tr>
                         <th>&nbsp;</th>
                         <th>Total </th>
-                        <th class="text-right">$268.85</th>
+                        <th class="text-right">{{ contaMesa.valorConta | currency: 'R$ ' }}</th>
                     </tr>
                 </tbody>
             </table>
 
             <div class="text-center">
-                <a href="#" class="btn btn-primary">
+                <a class="btn btn-primary" (click)="fecharConcluidosMesa(numeroMesa)">
                     Fechar Conta
                 </a>
             </div>

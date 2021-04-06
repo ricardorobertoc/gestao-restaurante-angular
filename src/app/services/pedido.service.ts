@@ -27,11 +27,15 @@ export class PedidoService {
   }
 
   atualizarPedido(id: any, pedido: Pedido) {
-    return this.httpClient.put(`${environment.urlBackEnd}/${id}`, pedido)
+    return this.httpClient.put(`${environment.urlBackEnd}/${id}`, pedido);
   }
 
   buscarPedidosConcluidosMesa(numeroMesa: any) {
     return this.httpClient.get(`${environment.urlBackEnd}/concluidos/${numeroMesa}`);
+  }
+
+  fecharPedidosConcluidosMesa(numeroMesa: any) {
+    return this.httpClient.get(`${environment.urlBackEnd}/mesa/${numeroMesa}`);
   }
 
 }
