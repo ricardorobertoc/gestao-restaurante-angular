@@ -40,7 +40,7 @@ export class FecharContaComponent implements OnInit {
 
   fecharConcluidosMesa(numeroMesa: any) {
     this.pedidoService.fecharPedidosConcluidosMesa(numeroMesa).subscribe();
-    SweetAlert.exibirAtencao("Mesa " + numeroMesa + " fechada com sucesso")
+    SweetAlert.exibirSucesso("Mesa " + numeroMesa + " fechada com sucesso")
     this.router.navigate([`/listar`])
   }
 

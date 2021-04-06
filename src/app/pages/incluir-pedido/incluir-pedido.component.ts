@@ -48,6 +48,7 @@ export class IncluirPedidoComponent implements OnInit {
       pedido.nomeItem = this.nomeItem.value;
       pedido.valor = this.valor.value;
       pedido.numeroMesa = this.numeroMesa.value;
+      pedido.situacao = "NOVO"
 
       this.pedidoService.incluir(pedido).subscribe((retorno: any) => {
         SweetAlert.exibirSucesso('Pedido ' + retorno.nomeItem + ' incluído com sucesso!')
